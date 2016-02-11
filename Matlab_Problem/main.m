@@ -8,8 +8,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-  clear all
-  close all
+  clear
+  clf
 
 
   %------------------------------------------
@@ -43,11 +43,11 @@
   
   
   % SNR range (in dB)
-  EbN0_dB = [-10:2.5:25];
+  EbN0_dB = -10:2.5:25;
   
   
   % specify the ISI channel 
-  Channel.Gains  = [ 2 -3/4 j];
+  Channel.Gains  = [ 2 -3/4 1i];
   Channel.Delays = [ 0.5 2 2.25];
   
   
@@ -116,7 +116,7 @@
       
 
       % generate vector 1
-      Vec_1    = (2*(rand(N_symbols,2)>0.5) -1)*[1;j];
+      Vec_1    = (2*(rand(N_symbols,2)>0.5) -1)*[1;1i];
       P        = 2;
       
       
@@ -143,9 +143,9 @@
       % (note that the factor 1/sqrt(delta_t) is 
       %  needed to get the noise variance after 
       %  the receiver filter correct.)
-      Eb = P/2 * Filter_3'*Filter_3*delta_t;
+      Eb = P/2 * (Filter_3'*Filter_3)*delta_t;
       g  = sqrt(Eb/10^(EbN0_dB(ii_SNR)/10));
-      Signal_4 = g*1/sqrt(2)*(randn(length(Signal_3),2)*[1;j])/sqrt(delta_t);
+      Signal_4 = g*1/sqrt(2)*(randn(length(Signal_3),2)*[1;1i])/sqrt(delta_t);
       
       
       % generate signal 5

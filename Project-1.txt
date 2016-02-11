@@ -1,0 +1,33 @@
+%---------------------------------------------------------------------------------------------------
+Problem 1
+%---------------------------------------------------------------------------------------------------
+
+Signals:
+    Signal_1:   symbol sequence upsampled at rate delta_t (Vec_1 upsampled)
+                P: signal amplitude in complex baseband
+    Signal_2:   complex baseband transmitted waveform (signal_1 convolved with transmitter filter)
+    Signal_3:   complex baseband data received waveform (signal_2 convolved with channel filter)
+    Signal_4:   complex baseband noise signal
+                Eb: received signal power
+                g: noise signal amplitude (sqrt(N0))
+    Signal_5:   complex baseband total received waveform (signal_3 + signal_4)
+    Signal_6:   complex baseband total received waveform matched filtered (signal_1 convolved with Receiver filter)
+
+    Vec_1:      Random QPSK data symbol sequence
+    Vec_2:      sampler output received sequence after syncronization (signal_6 downsampled)
+
+
+Filter purposes:
+    Filter_1: Transmitter filter
+    Filter_2: Channel filter
+    Filter_3: Transmitter*Channel filter
+    Filter_4: Matched filter of Filter 3, can be used as Receiver filter
+    Filter_5: Transmitter*Channel*Receiver filter, used to simulate the overall system response
+
+
+The convolutional products are multiplied with delta_t for normalization because in continuous time the convolution is an integral and we juste replace dt by delta_t in the integral.
+The factor 1/delta_t when we genrate Signal_1 is to keep the keep the same signal power SUM(vect_1(n)^2) = SUM(Signal_1(n)^2);
+
+%---------------------------------------------------------------------------------------------------
+Problem 2
+%---------------------------------------------------------------------------------------------------
