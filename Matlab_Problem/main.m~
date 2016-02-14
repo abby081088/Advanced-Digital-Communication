@@ -25,7 +25,7 @@
   N_symbols = 500;
   
   % number of data frames
-  N_frames  = 100;
+  N_frames  = 10;
   
   % duration of one symbol
   T_sym    = 1;
@@ -44,7 +44,7 @@
   
   % SNR range (in dB)
   EbN0_dB = -10:2.5:25;
-  %EbN0_dB = 50; % only one SNR for debug
+  %EbN0_dB = 10; % only one SNR for debug
   
   % specify the ISI channel 
   Channel.Gains  = [ 2 -3/4 1i];
@@ -57,8 +57,8 @@
   % parameters related to the receiver
   
   % sampling factor and sampling time
-  m        = 4; 
-  T_sample = T_sym/m; %m=1,2,4 only available to have T_sample multiple of delta_t 
+  m        = 3;
+  T_sample = T_sym/m;
   
   
   
@@ -218,12 +218,14 @@
       %--------------------------------------------------------------------
       % Zero-forcing equalizer
       [~,del]=max(abs(d_filter)); %delay created by the filter
+      s1 = L_o-del;  %past samples interfering
+      s2 = del-1; %future samples interfering
       k0=1;
-      k1=floor(L_o/m);
-      k2=k1;
+      k1=;
+      k2=;
       U = GenerateMatrix(d_filter,L_o,k0,k1,k2,m);
       
-      e = (1:k1+k2+1==(k1+1))';
+      e = (1:L_o==del)';
       c_zf = (U/(U'*U))*e;
       
       %One can test this correlator with:
