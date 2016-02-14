@@ -1,0 +1,80 @@
+\documentclass[a4paper]{article}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx}          % To handle figures
+\usepackage{amsmath}           % Defines certain mathematical symbols
+
+
+\renewcommand{\thesubsection}{\arabic{section}.\alph{subsection}}
+
+\begin{document}
+
+
+%---------------------------------------------------------------------------------------------------------
+%Title
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+\title{{\LARGE EQ2410 - Advanced Digital Communications} \\[0.5cm] \HRule \\[0.4cm]{Project 1 : Channel Equalization}\\[0.2cm] \HRule \\[0.5cm] }
+\author{Baptiste Cavarec \\ 940321-T197 \and Hugo Lime\\  920707-4635 \and Adrien Anxionnat\\ \#\#\#\#\#\#-\#\#\#\#}
+%\date{2000-10-10}
+
+\maketitle
+
+
+
+%---------------------------------------------------------------------------------------------------------
+%Problem 1
+\section{Problem 1}
+\subsection{Identification of signals}
+\begin{itemize}
+  	\item \verb|Vect_1|: Random QPSK data symbol sequence\\ 
+  $	\verb|Vect_1| \in {\{1+i, 1-i, -1+i, -1-i\}}^{\verb|N_symbols|} $
+  	\item \verb|Signal_1|: \verb|Vect_1| upsampled by factor \verb|T_sym|/ \verb|delta_t| and normalized\\
+  	$\verb|Signal_1|(1+k*\verb|T_sym|/ \verb|delta_t|)=\verb|Vect_1|(1+k)/ \verb|delta_t|$ with $k\in [0, \verb|N_symbols|-1]$
+  	\item \verb|Signal_2|: Complex baseband data transmitted waveform\\
+  	$\verb|Signal_2|=\verb|Signal_1|\star \verb|Filter_1|$
+  	\item \verb|Signal_3|: Complex baseband data received waveform\\
+  	$\verb|Signal_3|=\verb|Signal_2|\star \verb|Filter_2|$
+  	\item \verb|Signal_4|: Complex baseband noise waveform with two-sided variance $N_0$ 
+  	\item \verb|Signal_5|: Complex baseband total received waveform\\
+  	$\verb|Signal_5|=\verb|Signal_3| + \verb|Signal_4|$
+  	\item \verb|Signal_6|: Complex baseband total received waveform matched filtered\\
+  	$\verb|Signal_6|=\verb|Signal_5|\star \verb|Filter_4|$
+  	\item \verb|Vect_2|: Sampler output received symbol sequence after synchronization\\
+  	$\verb|Vect_2|(k)= \verb|Signal_6|(k*\verb|T_sym|/ \verb|delta_t|+\delta_{offset})$ (\verb|Signal_6| downsampled)
+\end{itemize}
+
+\subsection{Identification of filters}
+\begin{itemize}
+	\item \verb|Filter_1|: Transmitter filter
+	\item \verb|Filter_2|: Channel filter
+	\item \verb|Filter_3|: Transmitter and Channel chain filter
+	\item \verb|Filter_4|: Matched filter of \verb|Filter_3|, can be used as receiver filter
+	\item \verb|Filter_5|: Transmitter, channel and receiver chain filter, used to simulate the overall system response
+\end{itemize}
+
+\subsection{Normalization coefficient}
+In the program, we use a small time resolution (\verb|delta_t|) to represent continuous-time signals. We consider the signals to be constant over these small intervals. With this approximation, the integrals, used in the convolutions for example, are transformed into sums in the following way:
+\begin{equation*}
+(f\star g)(m\delta_{t}) = \int_{-\infty}^{+\infty} f(t)g(m\delta_{t}-t) dt = \sum_{k=-\infty}^{\infty}\left(\int_{k\delta_{t}}^{(k+1)\delta_{t}} f(t)g(m\delta_{t}-t) dt \right) \approx \delta_{t}\sum_{k=-\infty}^{\infty}f(k\delta_{t})g((m-k)\delta_{t})
+\end{equation*}
+
+And we can notice that, compared to the discrete-time convolution formula used by Matlab, the last sum is multiplied by \verb|delta_t|.\\
+
+The factor $1/\verb|delta_t|$ when we generate \verb|Signal_1| is another normalization used to keep the signal power indepedant of the time resolution. In the same manner we have:
+\begin{align*}
+P &=\frac{1}{N_{symbols}T_{sym}}\int_{0}^{N_{symbols}T_{sym}}|S_{1}(t)|^{2}dt\\
+&\approx \frac{1}{N_{symbols}T_{sym}}\sum_{k=0}^{(N_{symbols}-1)T_{sym}\delta_t}|S_{1}(k\delta_t)|^{2}\delta_t\\ &\approx\frac{{\delta_t}^2}{N_{symbols}T_{sym}\delta_t}\sum_{k=0}^{(N_{symbols}-1)T_{sym}\delta_t}|S_{1}(k\delta_t)|^{2}\\
+&\approx\frac{1}{N_{symbols}T_{sym}\delta_t}\sum_{k=0}^{(N_{symbols}-1)T_{sym}\delta_t}|\delta_t^2S_{1}(k\delta_t)|^{2} 
+\end{align*}
+And by dividing by $1/\verb|delta_t|$, the discrete-time signal power of \verb|Signal_1| is independant of \verb|delta_t| and equal to the one of \verb|Vect_1|.
+
+%---------------------------------------------------------------------------------------------------------
+%Problem 2
+
+
+
+%---------------------------------------------------------------------------------------------------------
+\end{document}

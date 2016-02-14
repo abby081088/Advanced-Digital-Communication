@@ -11,7 +11,7 @@ Signals:
                 Eb: received signal power
                 g: noise signal amplitude (sqrt(N0))
     Signal_5:   complex baseband total received waveform (signal_3 + signal_4)
-    Signal_6:   complex baseband total received waveform matched filtered (signal_1 convolved with Receiver filter)
+    Signal_6:   complex baseband total received waveform matched filtered (signal_5 convolved with Receiver filter)
 
     Vec_1:      Random QPSK data symbol sequence
     Vec_2:      sampler output received sequence after syncronization (signal_6 downsampled)
@@ -30,4 +30,11 @@ The factor 1/delta_t when we genrate Signal_1 is to keep the keep the same signa
 
 %---------------------------------------------------------------------------------------------------
 Problem 2
+%---------------------------------------------------------------------------------------------------
+
+Textbook 5.38 and 5.42
+
+
+%---------------------------------------------------------------------------------------------------
+Problem 3
 %---------------------------------------------------------------------------------------------------
