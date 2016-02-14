@@ -6,6 +6,7 @@
 
 \usepackage{graphicx}          % To handle figures
 \usepackage{amsmath}           % Defines certain mathematical symbols
+\usepackage{amsfonts}
 
 
 \renewcommand{\thesubsection}{\arabic{section}.\alph{subsection}}
@@ -73,8 +74,51 @@ And by dividing by $1/\verb|delta_t|$, the discrete-time signal power of \verb|S
 
 %---------------------------------------------------------------------------------------------------------
 %Problem 2
+\section{Problem 2}
+We know that $\mathbf{r}[n]=\mathbf{Ub}[n]+\mathbf{w}[n]$, that $\mathbf{R}=\mathbb{E}[\mathbf{r}[n]{\mathbf{r}[n]}^H]$ and that $\mathbf{p}=\mathbb{E}[b^*[n]\mathbf{r}[n]]$\\
+Therefore:
+\begin{equation*}
+\mathbf{r}[n]^H=\mathbf{b}[n]^H\mathbf{U}^H+\mathbf{w}[n]^H\\
+\end{equation*}
+so that:
+\begin{equation}
+\label{rr}
+\mathbf{r}[n]\mathbf{r}[n]^H = \mathbf{U}\mathbf{b}[n]\mathbf{b}[n]^H\mathbf{U}^H + \mathbf{U}\mathbf{b}[n]\mathbf{w}[n]^H+\mathbf{w}[n]\mathbf{b}[n]^H\mathbf{U}^H+\mathbf{w}[n]\mathbf{w}[n]^H
+\end{equation}
+with
+\begin{equation*}
+\mathbb{E}[\mathbf{w}[n]\mathbf{w}[n]^H] = \mathbf{C_w}
+\end{equation*}
+As the data values $b[n]$ are independant, we have
+\begin{equation*}
+\mathbb{E}[\mathbf{b}[n]\mathbf{b}[n]^H] = P_s\mathbf{I}\text{\hspace{2cm}with } P_s=\mathbb{E}[|b[n]|^2]
+\end{equation*}
+Moreover, as $b[n]$ and $w[k]$ are independant for every $n$ and $k$, it remains in the expectation of (\ref{rr}): 
+\begin{equation}
+\mathbf{R}=P_s\mathbf{U}\mathbf{U}^H + \mathbf{C_w}
+\end{equation}\\ 
 
+We can also write:
+\begin{equation}
+\label{br}
+b^*[n]\mathbf{r}[n]=\mathbf{U}b^*[n]\mathbf{b}[n] + b^*[n]\mathbf{w}[n]
+\end{equation}
+and $b[n]$ is independant of $w[k]$ for every $k$ and independant of $b[k]$ for every $k\ne1$. It gives:
+\begin{equation*}
+\mathbb{E}[b^*[n]\mathbf{b}[n]]=P_s\mathbf{e}
+\end{equation*}
 
+Taking the expectation of (\ref{br}), it remains:
+\begin{equation}
+\mathbb{E}[b^*[n]\mathbf{r}[n]]=P_s\mathbf{Ue}
+\end{equation}
 
+%---------------------------------------------------------------------------------------------------------
+%Problem 3
+\section{Problem 3}
+
+%---------------------------------------------------------------------------------------------------------
+%Problem 4
+\section{Problem 4}
 %---------------------------------------------------------------------------------------------------------
 \end{document}
