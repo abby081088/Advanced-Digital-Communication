@@ -25,7 +25,7 @@
   N_symbols = 500;
   
   % number of data frames
-  N_frames  = 100;
+  N_frames  = 10;
   
   % duration of one symbol
   T_sym    = 1;
@@ -57,8 +57,8 @@
   % parameters related to the receiver
   
   % sampling factor and sampling time
-  m        = 4; 
-  T_sample = T_sym/m; %m=1,2,4 only available to have T_sample multiple of delta_t 
+  m        =2; 
+  T_sample = T_sym/m; %m=1,2,4 to have T_sample multiple of delta_t 
   
   
   
@@ -88,8 +88,8 @@
   T_F4     = T_F3;
   Filter_4 = [0; conj(flipud(Filter_3))];
   
-% $$$ T_F4     = 1;
-% $$$ Filter_4 = [0; ones(round(T_F4/delta_t),1,1)];
+  %T_F4     = 1;
+  %Filter_4 = [0; ones(round(T_F4/delta_t),1,1)];
 
 
   % generate filter 5
@@ -105,6 +105,7 @@
   %------------------------------------------
   
   BER_zf = zeros(length(EbN0_dB),1);
+  BER_mmse = zeros(length(EbN0_dB),1);
   for ii_F = 1:N_frames
     for ii_SNR = 1:length(EbN0_dB)
       
@@ -214,56 +215,83 @@
       %  and measure the BER. The function GenerateMatrix.m 
       %  may be helpful for you.     
       %     
+
       
-      %--------------------------------------------------------------------
-      % Zero-forcing equalizer
-      [~,del]=max(abs(d_filter)); %delay created by the filter
+      Constellation = [1+1i,1-1i,-1-1i,-1+1i];
       k0=1;
       k1=floor(L_o/m);
       k2=k1;
       U = GenerateMatrix(d_filter,L_o,k0,k1,k2,m);
-      
       e = (1:k1+k2+1==(k1+1))';
-      c_zf = (U/(U'*U))*e;
       
-      %One can test this correlator with:
-      %k=2;c_zf'*[zeros(k*m,1);d_filter(1:length(d_filter)-k*m)]
-      %or k=3;c_zf'*[d_Zfilter(k*m+1:length(d_filter));zeros(k*m,1)]
-      Constellation = [1+1i,1-1i,-1-1i,-1+1i];
+      %--------------------------------------------------------------------
+      % Zero-forcing equalizer
+      if m >1 %ZF doesn't exist for m=1
+          c_zf = (U/(U'*U))*e;
       
+          
+          %One can test this correlator with:
+          %k=2;c_zf'*[zeros(k*m,1);d_filter(1:length(d_filter)-k*m)]
+          %or k=3;c_zf'*[d_Zfilter(k*m+1:length(d_filter));zeros(k*m,1)]
+
+          errors = 0;
+          Symbols_zf = zeros(N_symbols,1);
+          for ii_n = 0:N_symbols-1
+              %Decision variable
+              Z = c_zf'*Vec_2(1+ii_n*m:L_o+ii_n*m);
+
+              %Hard decision
+              dist = abs(Constellation - Z);
+              [~,hard_dec] = min(dist);
+              Symbols_zf(1+ii_n) = Constellation(hard_dec);
+
+              % Calculate BER (we assume Gray coding is used)
+              if(abs(Symbols_zf(1+ii_n)-Vec_1(1+ii_n))==2)
+                  errors=errors+1;
+              elseif(abs(Symbols_zf(1+ii_n)-Vec_1(1+ii_n))>2)
+                  errors=errors+2;
+              end
+          end
+          BER_zf(ii_SNR) =  BER_zf(ii_SNR) + errors/(2*length(Vec_1));
+      end
       
-      N_symbols_dec = 1+floor((length(Vec_2)-L_o)/m);
+      %--------------------------------------------------------------------
+      % Linear MMSE equalizer
+      P_s = 2;
+      Sigma2noise = Eb/10^(EbN0_dB(ii_SNR)/10);
+      autocorr_filter4 = mean(abs(Filter_4).^2)*autocorr([Filter_4;zeros(L_o*round(T_sample/delta_t),1)],L_o*round(T_sample/delta_t)-1);
+      C_w=toeplitz(2*Sigma2noise*autocorr_filter4(1:round(T_sample/delta_t):end));
+      
+      R = P_s*(U*U')+C_w;
+      p = P_s^2*U*e;
+      c_mmse=R\p;
+      
       errors = 0;
-      Symbols_zf = zeros(N_symbols_dec,1);
-      for ii_n = 0:N_symbols_dec-1
+      Symbols_mmse = zeros(N_symbols,1);
+      for ii_n = 0:N_symbols-1
           %Decision variable
-          Z = c_zf'*Vec_2(1+ii_n*m:L_o+ii_n*m);
+          Z = c_mmse'*Vec_2(1+ii_n*m:L_o+ii_n*m);
           
           %Hard decision
           dist = abs(Constellation - Z);
           [~,hard_dec] = min(dist);
-          Symbols_zf(1+ii_n) = Constellation(hard_dec);
+          Symbols_mmse(1+ii_n) = Constellation(hard_dec);
           
           % Calculate BER (we assume Gray coding is used)
-          if(abs(Symbols_zf(1+ii_n)-Vec_1(1+ii_n))==2)
+          if(abs(Symbols_mmse(1+ii_n)-Vec_1(1+ii_n))==2)
               errors=errors+1;
-          elseif(abs(Symbols_zf(1+ii_n)-Vec_1(1+ii_n))>2)
+          elseif(abs(Symbols_mmse(1+ii_n)-Vec_1(1+ii_n))>2)
               errors=errors+2;
           end
       end
-      BER_zf(ii_SNR) =  BER_zf(ii_SNR) + errors/(2*length(Vec_1));
+      BER_mmse(ii_SNR) =  BER_mmse(ii_SNR) + errors/(2*length(Vec_1));
 
-      
-      %--------------------------------------------------------------------
-      % Linear MSSE equalizer
-     
-      
       
     end
   end
   
   BER_zf = BER_zf/N_frames;
-  
+  BER_mmse = BER_mmse/N_frames;
   
   %------------------------------------------
   % Plot results
@@ -277,6 +305,9 @@
   
   figure(1);
   semilogy(EbN0_dB,BER_zf)
+  hold on
+  semilogy(EbN0_dB,BER_mmse)
+  hold off;
   
   
   
@@ -351,7 +382,7 @@
   axis([0 x_max -y_max y_max ])
   hold on
   % Plot circles representing sample time of filter 
-  stem(Offset + (i1-1+[0:length(d_filter)-1])*T_sample,d_filter )
+  stem(Offset + (i1-1+[0:length(d_filter)-1])*T_sample,abs(d_filter) )
   hold off
  
   %------------------------------------------
