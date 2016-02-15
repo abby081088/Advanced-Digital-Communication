@@ -6,20 +6,13 @@
 %  Period 3, 2013/14                          %
 %                                             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
   clear
   clf
 
-
-  %------------------------------------------
-  % Some parameters
-  %------------------------------------------
   
-
-  
-  %------------------------------------------
-  % parameters related to the data
+  %% Some parameters
+  %------------------------------------------------------------------------
+  % parameters related to the data:
   
   % number of data symbols
   N_symbols = 500;
@@ -29,18 +22,14 @@
   
   % duration of one symbol
   T_sym    = 1;
-  
-
-  
-  
-  %------------------------------------------
-  % parameters related to the channel model
+   
+  %------------------------------------------------------------------------
+  % parameters related to the channel model:
     
   % resolution of the discrete-time implementation
   %  (note that all sampling times etc. should 
   %   be multiples of delta_t)
   delta_t  = 0.05;
-  
   
   % SNR range (in dB)
   EbN0_dB = -10:2.5:25;
@@ -49,24 +38,18 @@
   % specify the ISI channel 
   Channel.Gains  = [ 2 -3/4 1i];
   Channel.Delays = [ 0.5 2 2.25];
-  
-  
-  
-  
-  %------------------------------------------
-  % parameters related to the receiver
+
+  %------------------------------------------------------------------------
+  % parameters related to the receiver:
   
   % sampling factor and sampling time
-  m        = 4; 
+  m        = 2; 
   T_sample = T_sym/m; %m=1,2,4 to have T_sample multiple of delta_t 
   
   
   
-  
-  %------------------------------------------
-  % Define some filters
-  %------------------------------------------
-  
+  %% Define some filters
+  %------------------------------------------------------------------------
   
   % generate filter 1
   T_F1     = T_sym;
@@ -97,51 +80,37 @@
   Filter_5 = conv(Filter_3,Filter_4)*delta_t;
  
 
-  
-  
-  
-  %------------------------------------------
-  % Start the simulation
-  %------------------------------------------
+  %% Start the simulation
+  %------------------------------------------------------------------------
   
   BER_zf = zeros(length(EbN0_dB),1);
   BER_mmse = zeros(length(EbN0_dB),1);
   BER_dfe_zf = zeros(length(EbN0_dB),1);
   BER_dfe_mmse = zeros(length(EbN0_dB),1);
+ 
   for ii_F = 1:N_frames
-    for ii_SNR = 1:length(EbN0_dB)
+    % Signals independant of SNR
+    %----------------------------------------------------------------------
+    % Step 1
+    %----------------------------------------------------------------------
+    % generate vector 1
+    Vec_1    = (2*(rand(N_symbols,2)>0.5) -1)*[1;1i];
+    P        = 2;      
       
+    % generate signal 1
+    Signal_1 = zeros((N_symbols-1)*T_sym/delta_t+1,1);
+    Signal_1(1:round(T_sym/delta_t):end) = Vec_1/delta_t;
 
-      
-      %------------------------------------------
-      % Step 1
-      %------------------------------------------
-      
-
-      % generate vector 1
-      Vec_1    = (2*(rand(N_symbols,2)>0.5) -1)*[1;1i];
-      P        = 2;
-      
-      
-      % generate signal 1
-      Signal_1 = zeros((N_symbols-1)*T_sym/delta_t+1,1);
-      Signal_1(1:round(T_sym/delta_t):end) = Vec_1/delta_t;
+    % generate signal 2
+    Signal_2 = conv(Signal_1,Filter_1)*delta_t;
     
+    %----------------------------------------------------------------------
+    % Step 2
+    %----------------------------------------------------------------------
+    % generate  signal 3
+    Signal_3 = conv(Signal_2,Filter_2)*delta_t;
 
-      % generate signal 2
-      Signal_2 = conv(Signal_1,Filter_1)*delta_t;
-  
-
-
-      %------------------------------------------
-      % Step 2
-      %------------------------------------------
-      
-
-      % generate  signal 3
-      Signal_3 = conv(Signal_2,Filter_2)*delta_t;
-      
-
+    for ii_SNR = 1:length(EbN0_dB)
       % generate another signal
       % (note that the factor 1/sqrt(delta_t) is 
       %  needed to get the noise variance after 
@@ -154,17 +123,11 @@
       % generate signal 5
       Signal_5 = Signal_3 + Signal_4;
       
-
-
-
-      %------------------------------------------
+      %--------------------------------------------------------------------
       % Step 3
-      %------------------------------------------
-      
-
+      %--------------------------------------------------------------------
       % generate signal 6
       Signal_6 = conv(Filter_4,Signal_5)*delta_t;
-
 
       % generate vector 2  
       Offset = rem(T_F3,T_sym); 
@@ -175,10 +138,9 @@
       % generate a discrete filter
       d_filter = Filter_5([1+round(Offset/delta_t):round(T_sample/delta_t):end]);
       
-      
-      %------------------------------------------
+      %--------------------------------------------------------------------
       % some preprocessing
-      %------------------------------------------
+      %--------------------------------------------------------------------
       
       % remove leading zeros (decision delay)
       i1 = find(d_filter ~= 0,1,'first');
@@ -186,14 +148,10 @@
       
       d_filter = d_filter(i1:i2);
       Vec_2      = Vec_2(i1:end);
-      
 
-
-
-
-      %------------------------------------------
+      %--------------------------------------------------------------------
       % Step 4
-      %------------------------------------------
+      %--------------------------------------------------------------------
       
 
       % observation interval (i2-i1+1)
@@ -207,18 +165,9 @@
       
       
       
-      %------------------------------------------
+      %--------------------------------------------------------------------
       % Equalization
-      %------------------------------------------
-      
-
-      %
-      %  Here, you should implement the equalizers
-      %  and measure the BER. The function GenerateMatrix.m 
-      %  may be helpful for you.     
-      %     
-
-      
+      %--------------------------------------------------------------------
       Constellation = [1+1i,1-1i,-1-1i,-1+1i];
       k0=1;
       k1=floor((L_o-1)/m);
@@ -297,11 +246,7 @@
       % Zero-forcing equalizer
       c_dfe_zf_ff = (U_dfe/(U_dfe'*U_dfe))*e_dfe; %feedforward correlator
       c_dfe_zf_fb = -c_dfe_zf_ff'*U(:,1:k1);
-
-      %One can test this correlator with:
-      %k=2;c_zf'*[zeros(k*m,1);d_filter(1:length(d_filter)-k*m)]
-      %or k=3;c_zf'*[d_Zfilter(k*m+1:length(d_filter));zeros(k*m,1)]
-
+      
       errors = 0;
       Symbols_dfe_zf = zeros(N_symbols,1);
       for ii_n = 0:N_symbols-1
@@ -322,7 +267,34 @@
           end
       end
       BER_dfe_zf(ii_SNR) =  BER_dfe_zf(ii_SNR) + errors/(2*length(Vec_1));
+    
+      
+      % MMSE
+      R_dfe = P_s*(U_dfe*U_dfe')+C_w;
+      p_dfe = P_s^2*U_dfe*e_dfe;
+      c_dfe_mmse_ff=R_dfe\p_dfe;
+      c_dfe_mmse_fb = -c_dfe_mmse_ff'*U(:,1:k1);
+      
+      errors = 0;
+      Symbols_dfe_mmse = zeros(N_symbols,1);
+      for ii_n = 0:N_symbols-1
+          %Decision variable
+          Symbols_dfe_mmse_padded=[zeros(k1,1);Symbols_dfe_mmse]; %add leading zeros
+          Z = c_dfe_mmse_fb*Symbols_dfe_mmse_padded(ii_n+1:ii_n+length(c_dfe_mmse_fb),:) + c_dfe_mmse_ff'*Vec_2(1+ii_n*m:L_o+ii_n*m);
 
+          %Hard decision
+          dist = abs(Constellation - Z);
+          [~,hard_dec] = min(dist);
+          Symbols_dfe_mmse(1+ii_n) = Constellation(hard_dec);
+          
+          % Calculate BER (we assume Gray coding is used)
+          if(abs(Symbols_dfe_mmse(1+ii_n)-Vec_1(1+ii_n))==2)
+              errors=errors+1;
+          elseif(abs(Symbols_dfe_mmse(1+ii_n)-Vec_1(1+ii_n))>2)
+              errors=errors+2;
+          end
+      end
+      BER_dfe_mmse(ii_SNR) =  BER_dfe_mmse(ii_SNR) + errors/(2*length(Vec_1));
       
     end
   end
@@ -332,11 +304,8 @@
   BER_dfe_zf = BER_dfe_zf/N_frames;
   BER_dfe_mmse = BER_dfe_mmse/N_frames;
   
-  %------------------------------------------
-  % Plot results
-  %------------------------------------------
-  
-  
+  %------------------------------------------------------------------------
+  %% Plot results
   %
   %  Here, you should plot your results.
   %  Use semilogy(EbN0_dB,BER) for the plots 
@@ -354,9 +323,8 @@
   title('BER of egalization algorithms');
   legend('ZF','MMSE','ZF-DFE','MMSE-DFE');
   
-  %------------------------------------------
-  % Look at the waveforms
-  %------------------------------------------
+  %------------------------------------------------------------------------
+  %% Look at the waveforms
   figure(2)
   % Transmitted signal (real part)
   subplot(511), plot([0:length(Signal_2)-1]*delta_t,Signal_2),grid on
@@ -390,9 +358,8 @@
   subplot(515), plot([0:length(Filter_5)-1]*delta_t,Filter_5),grid on
   
   
-  %---------------------------------
-  % Plot the filters gain
-  %----------------------------------
+  %------------------------------------------------------------------------
+  %% Plot the filters gain
   figure(3)  
   % Transmitter filter
   subplot(511), plot([0:length(Filter_1)-1]*delta_t,abs(Filter_1)),grid on
@@ -428,6 +395,5 @@
   stem(Offset + (i1-1+[0:length(d_filter)-1])*T_sample,abs(d_filter) )
   hold off
  
-  %------------------------------------------
-  %------------------------------------------
+  %------------------------------------------------------------------------
   

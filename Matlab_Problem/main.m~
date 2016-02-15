@@ -25,7 +25,7 @@
   N_symbols = 500;
   
   % number of data frames
-  N_frames  = 10;
+  N_frames  = 100;
   
   % duration of one symbol
   T_sym    = 1;
@@ -297,17 +297,13 @@
       % Zero-forcing equalizer
       c_dfe_zf_ff = (U_dfe/(U_dfe'*U_dfe))*e_dfe; %feedforward correlator
       c_dfe_zf_fb = -c_dfe_zf_ff'*U(:,1:k1);
-
-      %One can test this correlator with:
-      %k=2;c_zf'*[zeros(k*m,1);d_filter(1:length(d_filter)-k*m)]
-      %or k=3;c_zf'*[d_Zfilter(k*m+1:length(d_filter));zeros(k*m,1)]
-
+      
       errors = 0;
       Symbols_dfe_zf = zeros(N_symbols,1);
       for ii_n = 0:N_symbols-1
           %Decision variable
-          Symbols_dfe_zf_padded=[zeros(,1);Symbols_dfe_zf] %add leading zeros
-          Z = c_dfe_zf_fb*(ii_n+1:ii_n+length(c_dfe_zf_fb),:) + c_dfe_zf_ff'*Vec_2(k1+ii_n*m:k1+k2+ii_n*m);
+          Symbols_dfe_zf_padded=[zeros(k1,1);Symbols_dfe_zf]; %add leading zeros
+          Z = c_dfe_zf_fb*Symbols_dfe_zf_padded(ii_n+1:ii_n+length(c_dfe_zf_fb),:) + c_dfe_zf_ff'*Vec_2(1+ii_n*m:L_o+ii_n*m);
 
           %Hard decision
           dist = abs(Constellation - Z);
@@ -322,7 +318,36 @@
           end
       end
       BER_dfe_zf(ii_SNR) =  BER_dfe_zf(ii_SNR) + errors/(2*length(Vec_1));
+    
+      
+      % MMSE
+      R_dfe = P_s*(U_dfe*U_dfe')+C_w;
+      p_dfe = P_s^2*U_dfe*e_dfe;
+      c_dfe_mmse_ff=R_dfe\p_dfe;
+      c_dfe_mmse_fb = -c_dfe_mmse_ff'*U(:,1:k1);
+      
+      errors = 0;
+      Symbols_dfe_mmse = zeros(N_symbols,1);
+      for ii_n = 0:N_symbols-1
+          %Decision variable
+          Symbols_dfe_mmse_padded=[zeros(k1,1);Symbols_dfe_mmse]; %add leading zeros
+          Z = c_dfe_mmse_fb*Symbols_dfe_mmse_padded(ii_n+1:ii_n+length(c_dfe_mmse_fb),:) + c_dfe_mmse_ff'*Vec_2(1+ii_n*m:L_o+ii_n*m);
 
+          %Hard decision
+          dist = abs(Constellation - Z);
+          [~,hard_dec] = min(dist);
+          Symbols_dfe_mmse(1+ii_n) = Constellation(hard_dec);
+          
+          % Calculate BER (we assume Gray coding is used)
+          if(abs(Symbols_dfe_mmse(1+ii_n)-Vec_1(1+ii_n))==2)
+              errors=errors+1;
+          elseif(abs(Symbols_dfe_mmse(1+ii_n)-Vec_1(1+ii_n))>2)
+              errors=errors+2;
+          end
+      end
+      BER_dfe_mmse(ii_SNR) =  BER_dfe_mmse(ii_SNR) + errors/(2*length(Vec_1));
+
+      
       
     end
   end
@@ -349,12 +374,14 @@
   semilogy(EbN0_dB,BER_dfe_zf)
   semilogy(EbN0_dB,BER_dfe_mmse)
   hold off;
+  xlabel('SNR (dB)')
+  ylabel('BER (log scale)')
+  title('BER of egalization algorithms');
+  legend('ZF','MMSE','ZF-DFE','MMSE-DFE');
   
-  
-  
-  %------------------------------------------
-  % Look at the waveforms
-  %------------------------------------------
+  %------------------------------------------------------------------------
+  %% Look at the waveforms
+  %------------------------------------------------------------------------
   figure(2)
   % Transmitted signal (real part)
   subplot(511), plot([0:length(Signal_2)-1]*delta_t,Signal_2),grid on
@@ -388,9 +415,9 @@
   subplot(515), plot([0:length(Filter_5)-1]*delta_t,Filter_5),grid on
   
   
-  %---------------------------------
-  % Plot the filters gain
-  %----------------------------------
+  %------------------------------------------------------------------------
+  %% Plot the filters gain
+  %------------------------------------------------------------------------
   figure(3)  
   % Transmitter filter
   subplot(511), plot([0:length(Filter_1)-1]*delta_t,abs(Filter_1)),grid on
@@ -426,6 +453,5 @@
   stem(Offset + (i1-1+[0:length(d_filter)-1])*T_sample,abs(d_filter) )
   hold off
  
-  %------------------------------------------
-  %------------------------------------------
+  %------------------------------------------------------------------------
   
