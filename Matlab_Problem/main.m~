@@ -57,7 +57,7 @@
   % parameters related to the receiver
   
   % sampling factor and sampling time
-  m        = 4; 
+  m        = 1; 
   T_sample = T_sym/m; %m=1,2,4 to have T_sample multiple of delta_t 
   
   
@@ -306,8 +306,8 @@
       Symbols_dfe_zf = zeros(N_symbols,1);
       for ii_n = 0:N_symbols-1
           %Decision variable
-          Symbols_dfe_zf_padded=[zeros(k1,1);Symbols_dfe_zf]; %add leading zeros
-          Z = c_dfe_zf_fb*Symbols_dfe_zf_padded(ii_n+1:ii_n+length(c_dfe_zf_fb),:) + c_dfe_zf_ff'*Vec_2(1+ii_n*m:L_o+ii_n*m);
+          Symbols_dfe_zf_padded=[zeros(,1);Symbols_dfe_zf] %add leading zeros
+          Z = c_dfe_zf_fb*(ii_n+1:ii_n+length(c_dfe_zf_fb),:) + c_dfe_zf_ff'*Vec_2(k1+ii_n*m:k1+k2+ii_n*m);
 
           %Hard decision
           dist = abs(Constellation - Z);
@@ -349,10 +349,8 @@
   semilogy(EbN0_dB,BER_dfe_zf)
   semilogy(EbN0_dB,BER_dfe_mmse)
   hold off;
-  xlabel('SNR (dB)')
-  ylabel('BER (log scale)')
-  title('BER of egalization algorithms');
-  legend('ZF','MMSE','ZF-DFE','MMSE-DFE');
+  
+  
   
   %------------------------------------------
   % Look at the waveforms
