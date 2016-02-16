@@ -1,23 +1,14 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.22)  16 FEB 2016 22:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.1)  16 FEB 2016 22:08
 entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
 **LaTeX1.tex
-
-(C:\Users\Baptiste\Desktop\kth\Advanced-Digital-Communication\Rapport\LaTeX1.te
-x
+(./LaTeX1.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
-abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
-croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
-ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
- lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
-german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
-ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
-an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
-ishmax, welsh, loaded.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
+Babel <3.9l> and hyphenation patterns for 78 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -32,22 +23,22 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count87
@@ -62,28 +53,27 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen109
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.def"
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -233,7 +223,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -264,7 +254,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -288,27 +278,27 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count90
@@ -316,24 +306,24 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen111
 \Gin@req@width=\dimen112
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks18
 \ex@=\dimen113
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen114
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count91
@@ -374,34 +364,343 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2013/08/25 v0.4v Insert pages of external PDF documents (AM)
 
-! LaTeX Error: File `pdfpages.sty' not found.
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count103
+\calc@Bcount=\count104
+\calc@Adimen=\dimen122
+\calc@Bdimen=\dimen123
+\calc@Askip=\skip46
+\calc@Bskip=\skip47
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count105
+\calc@Cskip=\skip48
+)
+(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2013/10/06 v2.0d eso-pic (RN)
 
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+)
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
-Enter file name: 
-! Emergency stop.
-<read *> 
-         
-l.11 
-      
-*** (cannot \read from terminal in nonstop modes)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2013/08/25 v0.4v Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box28
+\AM@toc@title=\toks23
+\c@AM@survey=\count106
+\AM@templatesizebox=\box29
+) (./LaTeX1.aux)
+\openout1 = `LaTeX1.aux'.
 
- 
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=731.23584pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=57.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count107
+\scratchdimen=\dimen124
+\scratchbox=\box30
+\nofMPsegments=\count108
+\nofMParguments=\count109
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count110
+\MPscratchDim=\dimen125
+\MPnumerator=\count111
+\makeMPintoPDFobject=\count112
+\everyMPtoPDFconversion=\toks25
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box31
+LaTeX Font Info:    Try loading font information for U+msa on input line 24.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 24.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 34.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 34.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 34.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
+
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+
+ []
+
+[2] <BER-m1.png, id=28, 761.09344pt x 589.4522pt>
+File: BER-m1.png Graphic file (type png)
+ <use BER-m1.png>
+Package pdftex.def Info: BER-m1.png used on input line 125.
+(pdftex.def)             Requested size: 380.54579pt x 294.72537pt.
+
+<BER-m2.png, id=29, 761.09344pt x 524.71031pt>
+File: BER-m2.png Graphic file (type png)
+ <use BER-m2.png>
+Package pdftex.def Info: BER-m2.png used on input line 136.
+(pdftex.def)             Requested size: 380.54579pt x 262.3545pt.
+
+<Problem4SQ.pdf, id=30, 967.45442pt x 1449.25436pt>
+File: Problem4SQ.pdf Graphic file (type pdf)
+ <use Problem4SQ.pdf>
+Package pdftex.def Info: Problem4SQ.pdf used on input line 143.
+(pdftex.def)             Requested size: 967.45206pt x 1449.25084pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+
+<use Problem4SQ.pdf>
+Package pdftex.def Info: Problem4SQ.pdf used on input line 143.
+(pdftex.def)             Requested size: 967.45206pt x 1449.25084pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+ <use Problem4SQ.pdf>
+Package pdftex.def Info: Problem4SQ.pdf used on input line 143.
+(pdftex.def)             Requested size: 967.45206pt x 1449.25084pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+ <use Problem4SQ.pdf>
+Package pdftex.def Info: Problem4SQ.pdf used on input line 143.
+(pdftex.def)             Requested size: 967.45206pt x 1449.25084pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+
+<use Problem4SQ.pdf>
+Package pdftex.def Info: Problem4SQ.pdf used on input line 143.
+(pdftex.def)             Requested size: 967.45206pt x 1449.25084pt.
+ [3 <./BER-m1.png (PNG copy)> <./BER-m2.png (PNG copy)>]
+<Problem4SQ.pdf, id=41, page=1, 967.45442pt x 1449.25436pt>
+File: Problem4SQ.pdf Graphic file (type pdf)
+
+<use Problem4SQ.pdf, page 1>
+Package pdftex.def Info: Problem4SQ.pdf, page1 used on input line 143.
+(pdftex.def)             Requested size: 967.45206pt x 1449.25084pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+ <use Problem4SQ.pdf, page 1>
+Package pdftex.def Info: Problem4SQ.pdf, page1 used on input line 143.
+(pdftex.def)             Requested size: 564.20924pt x 845.18993pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+
+<use Problem4SQ.pdf, page 1>
+Package pdftex.def Info: Problem4SQ.pdf, page1 used on input line 143.
+(pdftex.def)             Requested size: 564.20924pt x 845.18993pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+ <use Problem4SQ.pdf, page 1>
+Package pdftex.def Info: Problem4SQ.pdf, page1 used on input line 143.
+(pdftex.def)             Requested size: 564.20924pt x 845.18993pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+
+<use Problem4SQ.pdf, page 1>
+Package pdftex.def Info: Problem4SQ.pdf, page1 used on input line 143.
+(pdftex.def)             Requested size: 564.20924pt x 845.18993pt.
+ [4 <./Problem4SQ.pdf>]
+<Problem4SQ.pdf, id=49, page=2, 967.45442pt x 1449.25436pt>
+File: Problem4SQ.pdf Graphic file (type pdf)
+
+<use Problem4SQ.pdf, page 2>
+Package pdftex.def Info: Problem4SQ.pdf, page2 used on input line 143.
+(pdftex.def)             Requested size: 564.20924pt x 845.18993pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+ <use Problem4SQ.pdf, page 2>
+Package pdftex.def Info: Problem4SQ.pdf, page2 used on input line 143.
+(pdftex.def)             Requested size: 564.20924pt x 845.18993pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+
+<use Problem4SQ.pdf, page 2>
+Package pdftex.def Info: Problem4SQ.pdf, page2 used on input line 143.
+(pdftex.def)             Requested size: 564.20924pt x 845.18993pt.
+ [5 <./Problem4SQ.pdf>]
+<Problem4SQ.pdf, id=56, page=3, 967.45442pt x 1449.25436pt>
+File: Problem4SQ.pdf Graphic file (type pdf)
+
+<use Problem4SQ.pdf, page 3>
+Package pdftex.def Info: Problem4SQ.pdf, page3 used on input line 143.
+(pdftex.def)             Requested size: 564.20924pt x 845.18993pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+ <use Problem4SQ.pdf, page 3>
+Package pdftex.def Info: Problem4SQ.pdf, page3 used on input line 143.
+(pdftex.def)             Requested size: 564.20924pt x 845.18993pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+
+<use Problem4SQ.pdf, page 3>
+Package pdftex.def Info: Problem4SQ.pdf, page3 used on input line 143.
+(pdftex.def)             Requested size: 564.20924pt x 845.18993pt.
+ [6 <./Problem4SQ.pdf>]
+<Problem4SQ.pdf, id=63, page=4, 967.45442pt x 1449.25436pt>
+File: Problem4SQ.pdf Graphic file (type pdf)
+
+<use Problem4SQ.pdf, page 4>
+Package pdftex.def Info: Problem4SQ.pdf, page4 used on input line 143.
+(pdftex.def)             Requested size: 564.20924pt x 845.18993pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+ <use Problem4SQ.pdf, page 4>
+Package pdftex.def Info: Problem4SQ.pdf, page4 used on input line 143.
+(pdftex.def)             Requested size: 564.20924pt x 845.18993pt.
+File: Problem4SQ.pdf Graphic file (type pdf)
+
+<use Problem4SQ.pdf, page 4>
+Package pdftex.def Info: Problem4SQ.pdf, page4 used on input line 143.
+(pdftex.def)             Requested size: 564.20924pt x 845.18993pt.
+ [7 <./Problem4SQ.pdf>] (./LaTeX1.aux) ) 
 Here is how much of TeX's memory you used:
- 2360 strings out of 493921
- 29044 string characters out of 3144867
- 85700 words of memory out of 3000000
- 5660 multiletter control sequences out of 15000+200000
- 4403 words of font info for 15 fonts, out of 3000000 for 9000
- 841 hyphenation exceptions out of 8191
- 27i,0n,24p,287b,38s stack positions out of 5000i,500n,10000p,200000b,50000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 4398 strings out of 493303
+ 58838 string characters out of 6139924
+ 136715 words of memory out of 5000000
+ 7748 multiletter control sequences out of 15000+600000
+ 21076 words of font info for 62 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 40i,18n,46p,321b,429s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-su
+per/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmbx6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
+9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/s
+ymbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx0900.pfb></
+usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/font
+s/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-su
+per/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></u
+sr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts
+/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-sup
+er/sftt0900.pfb>
+Output written on LaTeX1.pdf (7 pages, 2399589 bytes).
+PDF statistics:
+ 138 PDF objects out of 1000 (max. 8388607)
+ 91 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+
