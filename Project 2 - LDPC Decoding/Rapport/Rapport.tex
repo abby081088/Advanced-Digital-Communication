@@ -32,10 +32,12 @@ We were given a program simulating a transmission system using LDPC coding mappe
 \subsection{Identification of transmission system}
 
 By reading the matlab code main.m one can see that the channel is represented as: $e(i)= 1-2*(rand<\epsilon);$ where $rand<\epsilon$ is a boolean hence it tranforms b in -b with the probability $\epsilon$ so the channel represented by the equation is a Binary Symmetric Channel (BSC).
-As it is a BSC channel it is sufficient to consider the all zero codeword as the swap is independent of the bit (0 or 1) so only considering this word is sufficient to quantize the performance of our decoder.
+As it is a BSC channel it is sufficient to consider the all zero codeword as the swap is independent of the bit value (0 or 1) so only considering this word is sufficient to quantize the performance of our decoder.
 
 The Algorithm used here in order to decode the LDPC is Gallager's Algorithm A, one can recognize the variable node implemented in decoder\_1 (if all the other nodes point to -y then its -y else we keep y) and the check node implemented in decoder\_2 (the sum is mapped to a product in BPSK and then vi is the product of all the other elements)
 By looking in the matlab code and workspace it is easy to find out that Distr1a is of degree 3 then Distr2a is of degree 6 and Distr1b is of degree 3 and lastly Distr2b is of degree 6.
+
+When generating the check matrix for a fixed length of codeword, it may not be possible to get the exact edges distribution we want because we need an integer number of nodes. This problem is solved in \verb|main.m| by adjusting the number of nodes for each degree to get as close as possible to the desired distribution (see added comments in the program).
 
 \section{Problem 2}
 \subsection{Presentation of the problem}
@@ -72,7 +74,7 @@ p(n)= \epsilon (1-(1-p(n-1))^{d_c-1})^{d_v-1}
 \end{equation}
 
 Let's note Eq.~\ref{eq1} $p(n)=f(q(n-1))$ and Eq.~\ref{eq2} $q(n)=g(p(n))$ then Eq.~\ref{eq3} can be written $p(n)=f \circ g(p(n-1))=h(p(n-1))$.
-Then as $h\in C^2$ the recurrence sequence $\{p\}_{n\in\mathbb{N}}$ converges if and only if there exist $l$ so that $h'(x)\leq l <1$ and then the sequence converges to the unique fixed point of h (in our case 0). %Je crois que c'est pas le bon théorème, son critère est pas nécéssaire je crois
+Then as $h\in C^2$ the recurrence sequence $\{p\}_{n\in\mathbb{N}}$ converges if and only if there exist $l$ so that $h'(x)\leq l <1$ and then the sequence converges to the unique fixed point of h (in our case 0). %Je crois que c'est pas le bon thï¿½orï¿½me, son critï¿½re est pas nï¿½cï¿½ssaire je crois
 In order for our sequence to converge to 0 it must be strictly decreasing (as only 0 is a fixed point) then $p(n+1)<p(n)$ then $ f(q(n))<g^{-1}(q(n))$ as $q(n) =g(p(n))$.
 Then $ \epsilon q^{d_v-1}<1-(1-q)^{\frac{1}{d_c-1}}$. 
 We then can write $ \epsilon<\frac{1-(1-q)^{\frac{1}{d_c-1}}}{q^{d_v-1}}$, then for the (3,6) LDPC  $ \epsilon<\frac{1-(1-q)^{\frac{1}{5}}}{q^{2}}$, we then can derive in order to find the minimum of the function.
