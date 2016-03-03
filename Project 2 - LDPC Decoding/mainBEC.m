@@ -6,10 +6,10 @@ close all
 % ----------------------------------------
 
 % number of code symbols
-n=100;
+n=10000;
 
 % channel parameter
-epsilon = 10.^[-1:-0.1:-2];
+epsilon = 0.:0.05:0.8;
 
 % number of simulation runs
 N_simulations = 100;
@@ -114,11 +114,8 @@ for ii_sim = 1:N_simulations
         c = ones(1,n);
         
         % transmission over a noisy channel
-        e = 1-2*(rand(1,n)<epsilon(ii_e));
+        e = 1-(rand(1,n)<epsilon(ii_e));%% It's either 0 (erasure) or 1 (same)
         y = c.*e;
-        
-        
-        
         
         
         % ----------------------------------------
@@ -152,9 +149,7 @@ for ii_sim = 1:N_simulations
                     degree1 = Distr_1B.degree(ii_d1);
                     
                     % run the local decoder
-                    [ out1(pointer_B+[0:degree1-1]), c_hat(pointer_A) ]...
-                        = decoder_1( degree1, y(pointer_A), ...
-                        in1(pointer_B + [0:degree1-1]));
+                    [ out1(pointer_B+[0:degree1-1]), c_hat(pointer_A) ]= decoder_1belief( degree1, y(pointer_A),in1(pointer_B + [0:degree1-1]));
                     
                     % increment "pointers"
                     pointer_A = pointer_A + 1;
@@ -186,7 +181,7 @@ for ii_sim = 1:N_simulations
                     
                     % run the local decoder
                     out2(pointer_C+[0:degree2-1]) = ...
-                        decoder_2( degree2, in2(pointer_C + [0:degree2-1]) );
+                        decoder_2belief( degree2, in2(pointer_C + [0:degree2-1]) );
                     
                     % increment "pointer"
                     pointer_C = pointer_C + degree2;
@@ -214,7 +209,7 @@ for ii_sim = 1:N_simulations
         BER(ii_e) = ( BER(ii_e)*(ii_sim-1) + ber )/ii_sim;
         
         semilogy(epsilon,BER)
-        axis([0,0.1,10^-4, 1])
+        axis([0.1,0.8,10^-4, 1])
         title([' Number of Simulations : ' num2str(ii_sim)])
         xlabel('epsilon')
         ylabel('BER')

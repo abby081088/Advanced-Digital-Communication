@@ -1,5 +1,6 @@
 function [out, b_hat] = decoder_1(degree,y,in)
   
+% This implements the variable node
    
   
   for ii = 1:degree
